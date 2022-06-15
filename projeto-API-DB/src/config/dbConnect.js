@@ -1,7 +1,23 @@
 const mongoose = require ("mongoose");
 
-mongoose.connect("mongodb+srv://new-user25:reprograma123@cluster0.1vuycki.mongodb.net/reprograma");
+const MONGODB_URI = "mongodb+srv://carolalves90:naogostodetomate@cluster0.pplg699.mongodb.net/reprograma"
 
-let db = mongoose.connection;
 
-module.exports = db;
+// alt+z
+// <password> = 11aa22aa33aa
+
+const connect = async () => {
+    try {
+        await mongoose.connect(MONGODB_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
+        console.log("banco conectado!")
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+module.exports = {
+    connect
+}
