@@ -1,13 +1,9 @@
 const express = require ("express");
 const index = require ("./routes/index.js"); 
 const livros = require ("./routes/livros.js");
+const petsRoutes = require("./router/petsRoutes");
+
 const db = require ("./config/dbConnect.js");
-
-// db.catch((error) => console.log(error.message))
-// db.once("open", () => {
-//     console.log('Conexão com o banco feita com sucesso')
-// });
-
 
 const app = express();
 
@@ -24,6 +20,7 @@ app.use(function (req, res, next) {
 
 app.use("/", index);
 app.use("/livros", livros);
+app.use("/pets", petsRoutes);
 
 db.connect()
 
